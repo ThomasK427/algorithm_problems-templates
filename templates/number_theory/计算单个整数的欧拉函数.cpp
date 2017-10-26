@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//多次计算欧拉函数时可以打一个O(sqrt(n))范围内的素数表来加速
 int phi(int n){
     int x = n, ans = n;
     for(int i = 2; i <= x && i * i <= n; i++){
