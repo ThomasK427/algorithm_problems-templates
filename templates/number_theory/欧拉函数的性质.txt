@@ -1,0 +1,8 @@
+欧拉函数是小于等于n的正整数中与n互质的数的个数
+phi(n) = n(1 - 1/p1)(1 - 1/p2)...(1 - 1/pk) (对1 <= i <= k，pi是n的质因子）
+phi(1) = 1
+欧拉函数是积性函数，对正整数m、n，若gcd(m, n) = 1, phi(mn) = phi(m)phi(n)
+若n是质数，phi(n) = n - 1
+若n是质数p的k次幂，phi(n) = n^k - n^(k - 1)
+n为奇数时，phi(2n) = phi(n)
+1-n中满足gcd(x, n) = k的数的个数为phi(n / k) (n % k == 0)
