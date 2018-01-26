@@ -1,3 +1,7 @@
+/**
+*51nod 1105
+*/
+
 #include <stdio.h>
 #include <algorithm>
 using namespace std;

@@ -11,13 +11,13 @@
 *Output
 *
 *输出两两之间最大公约数的最大值。
-**/
+*/
 
 /**
 *由于s[i]不是很大，可以用一个10^6的桶统计每个数出现了多少次，记为ar[s[i]]。
 *倒着枚举答案ans，有约数ans的数的个数cnt = sum{ar[kx]}(k是正整数且kx<=max{s[i]})，
 *如果cnt>=2说明x就是最大的公约数。这个做法的时间复杂度是O( max{s[i]}*log(max{s[i]}) )。
-**/
+*/
 
 #include <bits/stdc++.h>
 using namespace std;
