@@ -1,1 +1,1 @@
-# algorithm_problems-templates
+# algorithm_problems_and_templates
