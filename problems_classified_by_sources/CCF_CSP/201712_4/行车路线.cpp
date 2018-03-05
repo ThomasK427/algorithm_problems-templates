@@ -12,7 +12,6 @@ int main()
     int n, m;
     scanf("%d%d", &n, &m);
     memset(s, INF, sizeof(s));
-    memset(t, -1, sizeof(t));
     for(int i = 0; i < m; i++){
         int t, a, b, c;
         scanf("%d%d%d%d", &t, &a, &b, &c);
@@ -28,9 +27,7 @@ int main()
     for(int i = 1; i < n; i++){
         int u = 0;
         for(int j = 1; j <= n; j++){
-            if(used[j] && (u == 0 || d[j] < d[u])){
 
-            }
         }
     }
     return 0;
