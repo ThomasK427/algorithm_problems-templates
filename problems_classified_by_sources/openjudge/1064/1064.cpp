@@ -30,6 +30,7 @@ int main()
             ub = mid;
         }
     }
+    //不能直接输出printf("%.2f\n", lb);，这样是四舍五入，但要求截尾
     printf("%.2f\n", LL(100 * lb) / 100.0);
     return 0;
 }
