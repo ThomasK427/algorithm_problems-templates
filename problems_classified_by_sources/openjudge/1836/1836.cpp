@@ -4,6 +4,9 @@ const int maxn = 1005;
 
 double ar[maxn];
 int dp1[maxn], dp2[maxn];
+bool used[maxn];
+
+//注意1 2 3 3 3 2 1这种情况
 
 int main()
 {
@@ -32,10 +35,22 @@ int main()
             }
         }
     }
-    int t = 0;
+    memset(used, 0, sizeof(used));
+    int ans = 0;
     for(int i = 1; i <= n; i++){
-        t = max(t, dp1[i] + dp2[i] - 1);
+        if(!used[i]){
+            int t = n;
+            for(int j = n; j >= 1; j--){
+                if(ar[i] == ar[j]){
+                    t = j;
+                    break;
+                }
+            }
+            used[i] = true;
+            used[t] = true;
+            ans = max(ans, dp1[i] + dp2[t] + (i == t ? -1: 0));
+        }
     }
-    printf("%d\n", n - t);
+    printf("%d\n", n - ans);
     return 0;
 }
