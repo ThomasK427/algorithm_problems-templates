@@ -1,10 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 int main()
 {
-    //19683
     int ans = 0;
     for(int S = 0; S < 19683; S++){
         stack<int> num, numb, op, opb;
@@ -16,24 +14,6 @@ int main()
         }
         numb.push(1);
         stack<int> nc = numb, nn = opb;
-//        while(!nc.empty()){
-//            cout << nc.top() << " ";
-//            nc.pop();
-//        }
-//        cout << endl;
-//        while(!nn.empty()){
-//            if(nn.top() == 0){
-//                cout << "+" << " ";
-//            }
-//            else if(nn.top() == 1){
-//                cout << "-" << " ";
-//            }
-//            else{
-//                cout << "*" << " ";
-//            }
-//            nn.pop();
-//        }
-//        cout << endl;
         num.push(numb.top());
         numb.pop();
         while(!opb.empty()){
@@ -50,16 +30,13 @@ int main()
                 int num1 = num.top();
                 num.pop();
                 if(opr == 2){
-                    //cout << num1 << " * " << num2 << endl;
                     num.push(num1 * num2);
                 }
                 else if(opr == 1){
                     num.push(num1 - num2);
-                    //cout << num1 << " - " << num2 << endl;
                 }
                 else{
                     num.push(num1 + num2);
-                   // cout << num1 << " + " << num2 << endl;
                 }
                 while(!op.empty()){
                     num2 = num.top();
@@ -69,22 +46,17 @@ int main()
                     opr = op.top();
                     op.pop();
                     if(opr == 2){
-                       // cout << num1 << " * " << num2 << endl;
                         num.push(num1 * num2);
                     }
                     else if(opr == 1){
                         num.push(num1 - num2);
-                       // cout << num1 << " - " << num2 << endl;
                     }
                     else{
                         num.push(num1 + num2);
-                       // cout << num1 << " + " << num2 << endl;
                     }
                 }
             }
         }
-       // cout << num.size() << endl;
-       // cout << num.top() << endl;
         if(num.top() == 0){
             ans++;
         }
