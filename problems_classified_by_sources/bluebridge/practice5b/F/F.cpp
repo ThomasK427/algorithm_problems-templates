@@ -68,7 +68,7 @@ int main()
     do{
         int sum = 0;
         for(int i = 0; i < na; i++){
-            sum += dist[i][(i + 1) % na];
+            sum += dist[ag[i]][ag[(i + 1) % na]];
         }
         res = min(res, sum);
     }while(next_permutation(ag + 1, ag + na));
