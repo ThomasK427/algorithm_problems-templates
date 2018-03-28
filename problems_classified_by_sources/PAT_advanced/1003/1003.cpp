@@ -19,13 +19,14 @@ int main()
     memset(cost, INF, sizeof(cost));
     memset(used, 0, sizeof(used));
     for(int i = 0; i < n; i++){
+        //g[i][i] = 0;
         cost[i][i] = 0;
     }
     for(int i = 0; i < m; i++){
         int a, b, c;
         scanf("%d%d%d", &a, &b, &c);
-        g[a][b] = c;
-        cost[a][b] = c;
+        g[a][b] = min(g[a][b], c);
+        cost[a][b] = g[a][b];
     }
     d[s] = 0;
     cnt[s] = 1;
@@ -42,7 +43,7 @@ int main()
                 d[j] = d[v] + g[v][j];
                 cnt[j] = cnt[v];
             }
-            else if(d[v] + g[v][j] == d[j]){
+            else if(d[v] + g[v][j] == d[j] && v != j){
                 cnt[j] += cnt[v];
             }
         }
