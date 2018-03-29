@@ -17,7 +17,7 @@ void arrange(int num) {
         if (!vis[i]) {
             int j;
             for (j = i + 1; j < len; ++j) {
-                if (buf[i] == buf[j] && str[i] == str[j]) {
+                if (str[i] == str[j] && vis[j]) {
                     break;
                 }
             }
