@@ -23,11 +23,7 @@ int main()
     }
     int n, m, k;
     scanf("%d%d%d", &n, &m, &k);
-    if(sg[n] ^ sg[m] ^ sg[k]){
-        printf("win");
-    }
-    else{
-        printf("loss");
-    }
+    if(sg[n] ^ sg[m] ^ sg[k]) printf("win");
+    else printf("lose");
     return 0;
 }
