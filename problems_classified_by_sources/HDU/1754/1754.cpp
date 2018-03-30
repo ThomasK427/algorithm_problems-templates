@@ -50,10 +50,7 @@ int main()
         for(int i = 1; i <= N; i++){
             scanf("%d", ar + i);
         }
-        n = 1;
-        while(n < N){
-            n *= 2;
-        }
+        n = N;
         build_tree(1, 1, n);
         while(M--){
             char c;
