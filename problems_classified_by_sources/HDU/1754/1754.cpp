@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define max(a,b) ((a)>(b)?(a):(b))
+#include <algorithm>
 using namespace std;
 const int INF = 0x3f3f3f3f;
 const int maxn = 200005;
@@ -53,9 +53,6 @@ int main()
         n = 1;
         while(n < N){
             n *= 2;
-        }
-        for(int i = N + 1; i <= n; i++){
-            ar[i] = -INF;
         }
         build_tree(1, 1, n);
         while(M--){
