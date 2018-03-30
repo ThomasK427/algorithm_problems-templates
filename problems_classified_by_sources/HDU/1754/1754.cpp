@@ -1,9 +1,10 @@
-#include <bits/stdc++.h>
+#include <stdio.h>
+#define max(a,b) ((a)>(b)?(a):(b))
 using namespace std;
 const int INF = 0x3f3f3f3f;
 const int maxn = 200005;
 
-int ar[maxn], maxv[maxn * 2], n;
+int ar[maxn], maxv[maxn * 4], n;
 
 void push_up(int o){
     maxv[o] = max(maxv[o * 2], maxv[o * 2 + 1]);
@@ -37,10 +38,9 @@ int query(int o, int l, int r, int a, int b){
         return maxv[o];
     }
     int mid = (l + r) / 2;
-    int res = -INF;
-    res = max(res, query(o * 2, l, mid, a, b));
-    res = max(res, query(o * 2 + 1, mid + 1, r, a, b));
-    return res;
+    int res1 = query(o * 2, l, mid, a, b);
+    int res2 = query(o * 2 + 1, mid + 1, r, a, b);
+    return max(res1, res2);
 }
 
 int main()
