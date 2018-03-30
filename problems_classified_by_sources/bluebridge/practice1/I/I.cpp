@@ -48,9 +48,9 @@ int main()
         g[v].push_back(u);
     }
     dfs(p, -1);
-    for(int i = 1; i <= n; i++){
-        ans[i] = sum(r[i]) - sum(l[i]);
-        add(i);
+    for(int i = n; i >= 1; i--){
+        ans[i] = (r[i] - l[i]) - (sum(r[i]) - sum(l[i] - 1));
+        add(l[i]);
     }
     for(int i = 1; i <= n; i++){
         printf("%d%c", ans[i], i == n ? '\n' : ' ');
