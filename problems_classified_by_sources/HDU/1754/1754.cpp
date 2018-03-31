@@ -4,13 +4,16 @@ using namespace std;
 const int INF = 0x3f3f3f3f;
 const int maxn = 200005;
 
-int ar[maxn], maxv[maxn * 4], n;
+int ar[maxn], maxv[maxn * 4], n, N;
 
 void push_up(int o){
     maxv[o] = max(maxv[o * 2], maxv[o * 2 + 1]);
 }
 
 void build_tree(int o, int l, int r){
+    if(l > N){
+        return;
+    }
     if(l == r){
         maxv[o] = ar[l];
         return;
@@ -45,12 +48,15 @@ int query(int o, int l, int r, int a, int b){
 
 int main()
 {
-    int N, M;
+    int M;
     while(~scanf("%d%d", &N, &M)){
         for(int i = 1; i <= N; i++){
             scanf("%d", ar + i);
         }
-        n = N;
+        n = 1;
+        while(n < N){
+            n *= 2;
+        }
         build_tree(1, 1, n);
         while(M--){
             char c;
