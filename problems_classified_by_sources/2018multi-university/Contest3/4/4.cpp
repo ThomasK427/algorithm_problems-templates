@@ -1,3 +1,5 @@
+//打表找规律即可
+
 #include <bits/stdc++.h>
 using namespace std;
 

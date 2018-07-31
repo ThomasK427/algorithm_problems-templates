@@ -2,39 +2,73 @@
 using namespace std;
 typedef long long LL;
 const int INF = 0x3f3f3f3f;
-const int maxn = 10005;
+const int maxn = 70000005;
 
-int n, m, k, p, q, r, MOD;
-int a[maxn], maxrating[maxn], cnt[maxn];
+int n, m, k;
+LL p, q, r, MOD;
+LL a[maxn];
+
+struct Node{
+    LL value;
+    int index;
+}que[maxn];
+
+template <class T>
+inline void scan_d(T &ret)
+{
+    char c;
+    ret = 0;
+    while ((c = getchar()) < '0' || c > '9');
+    while (c >= '0' && c <= '9')
+    {
+        ret = ret * 10 + (c - '0'), c = getchar();
+    }
+}
 
 int main()
 {
     int T;
     scanf("%d", &T);
     while(T--){
-        scanf("%d%d%d%d%d%d%d", &n, &m, &k, &p, &q, &r, &MOD);
+        scanf("%d%d%d%lld%lld%lld%lld", &n, &m, &k, &p, &q, &r, &MOD);
         for(int i = 1; i <= k; i++){
-            scanf("%d", a + i);
+            scan_d(a[i]);
         }
         for(int i = k + 1; i <= n; i++){
-            a[i] = (p * a[i - 1] + q * i + r) % MOD;
+            a[i] = ((p * a[i - 1] % MOD + q * i % MOD) % MOD + r) % MOD;
         }
-        int A = 0, B = 0;
-        for(int i = 1; i <= n - m + 1; i++){
-            if(i == 1 || a[i] < a[i - 1]){
-                maxrating[i] = 0, cnt[i] = 0;
-                for(int j = i; j <= i + m - 1; j++){
-                    if(a[j] > maxrating[i]){
-                        maxrating[i] = a[j];
-                        cnt[i]++;
+        int s = 0, t = 0;
+        LL A = 0, B = 0;
+        for(int i = n; i >= 1; i--){
+            if(s == t){
+                que[t].value = a[i];
+                que[t].index = i;
+                t++;
+            }else{
+                while(t > s){
+                    if(a[i] >= que[t - 1].value){
+                        t--;
+                    }else{
+                        que[t].value = a[i];
+                        que[t].index = i;
+                        t++;
+                        break;
                     }
                 }
-            }else{
             }
-            A += maxrating[i] ^ i;
-            B += cnt[i] ^ i;
+            while(s < t){
+                if(que[s].index > i + m - 1){
+                    s++;
+                }else{
+                    break;
+                }
+            }
+            if(i <= n - m + 1){
+                A += que[s].value ^ i;
+                B += (t - s) ^ i;
+            }
         }
-        printf("%d %d\n", A, B);
+        printf("%lld %lld\n", A, B);
     }
     return 0;
 }
